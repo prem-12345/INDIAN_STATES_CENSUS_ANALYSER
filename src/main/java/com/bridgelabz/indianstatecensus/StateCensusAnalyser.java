@@ -9,13 +9,7 @@ import java.util.List;
 
 
 public class StateCensusAnalyser {
-    String filePath = "IndianStateCensus.csv";
-
-    public static void main(String[] args) throws IOException {
-        StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
-        stateCensusAnalyser.loadStateCensusCsvData();
-        stateCensusAnalyser.numberOfRecords();
-    }
+    String filePath;
 
     public void loadStateCensusCsvData() {
         try {
@@ -34,7 +28,7 @@ public class StateCensusAnalyser {
         }
     }
 
-    public int numberOfRecords() throws IOException {
+    public int numberOfRecords(String filePath) throws StateCensusAnalyserException, IOException {
         FileReader fileReader = new FileReader(filePath);
         CSVReader csvReader = new CSVReaderBuilder(fileReader)
                 .withSkipLines(1)
@@ -42,7 +36,6 @@ public class StateCensusAnalyser {
         List<String[]> allData = csvReader.readAll();
         int numberOfRecords;
         numberOfRecords = allData.size();
-        System.out.println("Total Number Of Records: "+numberOfRecords);
         return numberOfRecords;
     }
 }

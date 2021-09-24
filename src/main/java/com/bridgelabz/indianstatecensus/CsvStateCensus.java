@@ -11,27 +11,28 @@ public class CsvStateCensus {
         return state;
     }
 
-    public int getAreaInSqkm() {
-        return areaInSqkm;
-    }
-    public int getPopulation() {
-        return population;
-    }
-
-    public int getDensityPerSqkm() {
-        return densityPerSqkm;
-    }
-
     public void setState(String state) {
         this.state = state;
+    }
+
+    public int getAreaInSqkm() {
+        return areaInSqkm;
     }
 
     public void setAreaInSqkm(int areaInSqkm) {
         this.areaInSqkm = areaInSqkm;
     }
 
+    public int getPopulation() {
+        return population;
+    }
+
     public void setPopulation(int population) {
         this.population = population;
+    }
+
+    public int getDensityPerSqkm() {
+        return densityPerSqkm;
     }
 
     public void setDensityPerSqkm(int densityPerSqkm) {
