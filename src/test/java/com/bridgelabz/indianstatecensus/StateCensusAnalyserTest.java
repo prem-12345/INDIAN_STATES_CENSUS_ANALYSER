@@ -9,6 +9,7 @@ class StateCensusAnalyserTest {
     String filePath = "IndianStateCensus.csv";
     String wrongCsvFilePath = "IndianStateCensusWrongPath.csv";
     String wrongCsvFileType = "IndianStateCensusWrongFileType.txt";
+    String wrongCsvFileHeader = "IndianStateCensusWrongHeader.csv";
 
     @Test
     public void givenIndianStateCensusCsvFile_shouldReturn_correctNoOfRecords() {
@@ -44,4 +45,17 @@ class StateCensusAnalyserTest {
             assertEquals(StateCensusAnalyserException.ExceptionType.WRONG_FILE_TYPE,e.type);
         }
     }
+
+    @Test
+    public void givenIndianStateCensusWrongHeader_shouldThrowException() throws IOException {
+        StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
+        try {
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(StateCensusAnalyserException.class);
+            stateCensusAnalyser.numberOfRecords(wrongCsvFileHeader);
+        }catch (StateCensusAnalyserException e){
+            assertEquals(StateCensusAnalyserException.ExceptionType.WRONG_HEADER,e.type);
+        }
+    }
+
 }
